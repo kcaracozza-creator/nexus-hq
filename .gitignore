@@ -1,0 +1,8 @@
+data/
+*.db
+__pycache__/
+*.pyc
+.env
+cleanup.py
+nexus_client_config.json
+local_sales_log.json
