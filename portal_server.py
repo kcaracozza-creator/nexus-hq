@@ -8,7 +8,7 @@ Runs on Zultan (192.168.1.152:5000)
 Patent Pending - Kevin Caracozza
 """
 
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import hashlib
@@ -739,6 +739,15 @@ def get_stats():
 
     conn.close()
     return jsonify(stats)
+
+# =============================================================================
+# STATIC PAGES
+# =============================================================================
+
+@app.route('/kickstarter')
+def kickstarter_page():
+    """Serve the Kickstarter landing page"""
+    return send_from_directory('.', 'kickstarter.html')
 
 # =============================================================================
 # HEALTH CHECK
