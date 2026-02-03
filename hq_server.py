@@ -27,7 +27,7 @@ Patent Claims Supported:
 Author: Kevin Caracozza / NEXUS Team
 """
 
-from flask import Flask, jsonify, request, render_template_string
+from flask import Flask, jsonify, request, render_template_string, send_from_directory
 from flask_cors import CORS
 import sqlite3
 from datetime import datetime, timedelta
@@ -1119,6 +1119,16 @@ DASHBOARD_HTML = '''
 def dashboard():
     """Main dashboard page"""
     return render_template_string(DASHBOARD_HTML)
+
+
+# ============================================
+# STATIC PAGES
+# ============================================
+
+@app.route('/kickstarter')
+def kickstarter_page():
+    """Serve the Kickstarter landing page"""
+    return send_from_directory('.', 'kickstarter.html')
 
 
 # ============================================
